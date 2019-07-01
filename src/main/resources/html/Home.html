@@ -8,18 +8,41 @@
 
 <script>
 
+    class Note {
+        name;
+        description;
+        constructor(data) {
+            Object.assign(this, data);
+        }
+    }
+
    const getMyStuff = async () => {
        try {
            const response = await fetch("http://localhost:8080/api/v1/notes");
            myJson = await response.json();
            console.log(myJson);
+           console.log("-------------");
+           console.log(myJson.length);
+           for (i = 0; i < myJson.length; i++){
+               console.log(myJson[i]);
+               const note = new Note(myJson[i])
+               var node = document.createElement("LI");
+               var textnode = document.createTextNode("name is: " + note.name + " " + "description is: " +note.description);         // Create a text node
+               node.appendChild(textnode);
+               document.getElementById("myList").appendChild(node);
+           }
+
        } catch (e) {
            console.log(e);
        }
-   }
+   };
    getMyStuff();
 
 </script>
+
+<ul id="myList">
+
+</ul>
 
 </body>
 </html>
