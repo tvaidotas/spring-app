@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+   const getMyStuff = async () => {
+       try {
+           const response = await fetch("http://localhost:8080/api/v1/notes");
+           myJson = await response.json();
+           console.log(myJson);
+       } catch (e) {
+           console.log(e);
+       }
+   }
+   getMyStuff();
+
+</script>
+
+</body>
+</html>
