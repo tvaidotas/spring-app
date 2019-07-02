@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
+
 @RequestMapping("api/v1")
 public class NotesController {
 
     @Autowired
     private NotesRepository notesRepository;
 
+    @CrossOrigin("http://localhost:8080")
     @RequestMapping(value = "notes", method = RequestMethod.GET)
     public List<Note> list(){
         return notesRepository.findAll();
